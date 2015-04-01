@@ -1,0 +1,31 @@
+extends layout_admin
+
+block content
+  .page-header
+    h1
+      span.glyphicon.glyphicon-film
+      &nbsp;Recipe Manager
+
+  .panel.panel-primary
+    .panel-heading Recipe List
+    .panel-body
+      .table-responsive
+        table.table.table-striped.table-hover
+          tr
+            th(style="width: 15%") Recipe Name
+            th(style="width: 15%") Recipe Brief
+            th(style="width: 10%") Recipe Guide
+            th(style="width: 30%") Recipe Image
+            th(style="width: 10%") 操作
+          each c in list
+            tr
+              td #{c.name}
+              td #{c.brief}
+              td #{c.guide}
+              td
+                img(src="#{c.imageSrc}")
+              td
+                a.btn.btn-danger(href="/removecourse/#{c._id}") 删除
+                a.btn.btn-info(href="/course_edit?id=#{c._id}") 编辑
+
+  a.btn.btn-success(href="/recipe/add") + Add

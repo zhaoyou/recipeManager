@@ -1,0 +1,29 @@
+extends layout_admin
+
+block content
+  .page-header
+    h1
+      span.glyphicon.glyphicon-facetime-video
+      &nbsp;&nbsp; Add Recipe
+  form.form-horizontal(role="form", method="post", action="/recipe/save")
+    .form-group
+      label.col-sm-2.control-label Recipe Name
+      .col-sm-10
+        input.form-control(name="name" type="text",  placeholder="Recipe Name",  required)
+    .form-group
+      label.col-sm-2.control-label Recipe Brief
+      .col-sm-10
+        input.form-control(name="brief" type="text", placeholder="Recipe Brief" required)
+    .form-group
+      label.col-sm-2.control-label Recipe Image
+      .col-sm-10
+        textarea.form-control(name="imageSrc", type="text" placeholder="http://...." required)
+    .form-group
+      label.col-sm-2.control-label Recipe Guide
+      .col-sm-10
+        textarea.form-control(name="guide", rows="3" placeholder="Recipe guide" required)
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-success(type="submit") Add
+        &nbsp;&nbsp;
+        a.btn.btn-default(href="/recipes") Cancel

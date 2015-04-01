@@ -1,0 +1,24 @@
+extends layout_admin
+
+block content
+
+  .jumbotron
+    h1 #{course.name}
+    p #{course.desc}
+
+  each lesson in (course.lessons || [])
+    blockquote
+      p
+        #{lesson.lesson_name}
+        small lessonSubject: #{lesson.lesson_subject}
+        small pptUrl: #{lesson.ppt_url}
+        small pptAt: #{lesson.ppt_at}
+        small pptTotal: #{lesson.ppt_total}
+        small ebookUrl: #{lesson.ebook_url}
+        small ebookAt: #{lesson.ebook_at}
+        small ebookTotal: #{lesson.ebook_total}
+        small isCurrent: #{lesson.is_current}
+        a.btn.btn-danger.btn-sm(href="/admin/removeLesson?cid=#{course._id}&lid=#{lesson.id}") 删除
+  hr
+
+  a.btn.btn-success(href="/admin/addLesson") 添加课堂
