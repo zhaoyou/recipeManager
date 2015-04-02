@@ -29,39 +29,27 @@ exports.save = function(req, res, next) {
 }
 
 exports.remove = function(req, res, next) {
-  req.db.recipe.remove({_id: new mongo.ObjectID(req.params.id)}, function(error, result) {
-    res.redirect('/admin/course_list');
+  req.db.recipe.remove({_id: new mongo.ObjectID(req.query.id)}, function(error, result) {
+    res.redirect('/recipes');
   });
 }
 
-exports.courseEdit = function(req, res, next) {
+exports.toEdit = function(req, res, next) {
   req.db.recipe.findOne({_id: new mongo.ObjectID(req.query.id)}, function(error, obj) {
     console.log(obj);
-    obj.price = obj.course_price.map(function(elem) {
-      return elem.model + ';' + elem.price;
-    });
-    console.log(obj.price);
-    res.render('course_edit', {'obj': obj || {}});
+    res.render('recipe_edit', {'obj': obj || {}});
   });
 }
 
-exports.updateCourse = function(req, res, next) {
+exports.update = function(req, res, next) {
   var data = req.body;
   var id = new mongo.ObjectID(data.id)
   data.updateAt = new Date().getTime();
-  data.course_content = data.course_content.split('\n');
 
-  var pricePair = data.course_price.split('\n').map(function(elem) {
-    return {
-      model: elem.split(';')[0],
-      price: elem.split(';')[1]
-    }
-  });
-  data.course_price = pricePair;
   console.log(data);
   delete data.id;
   req.db.recipe.update({'_id': id}, {$set: data}, function(error, obj) {
-    res.redirect('/admin/course_list');
+    res.redirect('/recipes');
   });
 
 }

@@ -4,79 +4,27 @@ block content
   .page-header
     h1
       span.glyphicon.glyphicon-facetime-video
-      &nbsp;&nbsp; 新建课程
-  form.form-horizontal(role="form", method="post")
+      &nbsp;&nbsp; Edit Recipe
+  form.form-horizontal(role="form", method="post", action="/recipe/update")
     .form-group
-      label.col-sm-2.control-label 课程名称
+      label.col-sm-2.control-label Recipe Name
       .col-sm-10
-        input.form-control(name="course_name" type="text",  placeholder="课程名称",  value="#{obj.course_name}" required)
+        input.form-control(name="name" type="text",  placeholder="Recipe Name", value="#{obj.name}" required)
     .form-group
-      label.col-sm-2.control-label 课程课时
+      label.col-sm-2.control-label Recipe Brief
       .col-sm-10
-        input.form-control(name="course_period" type="number", placeholder="课程总课时" value="#{obj.course_period}" required)
+        input.form-control(name="brief" type="text", placeholder="Recipe Brief" value="#{obj.brief}" required)
     .form-group
-      label.col-sm-2.control-label 课程描述
+      label.col-sm-2.control-label Recipe Image
       .col-sm-10
-        textarea.form-control(name="course_desc", rows="3" placeholder="课程描述"  required) #{obj.course_desc}
+        input.form-control(name="imageSrc", type="text" placeholder="http://...." value="#{obj.imageSrc}" required)
     .form-group
-      label.col-sm-2.control-label 课程内容(每行一个主题内容）
+      label.col-sm-2.control-label Recipe Guide
       .col-sm-10
-        textarea.form-control(name="course_content", rows="10" placeholder="课程内容，每一课时内容一行回车"   required) #{obj.course_content.join('\n') }
-    .form-group
-      label.col-sm-2.control-label 报价
-      .col-sm-10
-        textarea.form-control(name="course_price", rows="10" placeholder="课程报价，每行一个类别： 模式;价格（用分号隔开)" value="" required) #{obj.price.join('\n')}
-    .form-group
-      label.col-sm-2.control-label 1对1
-      .col-sm-10
-        input.form-control(name="vip_price",  type="number" step="0.01" placeholder="One on One price" value="#{obj.vip_price || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 1对1 Paypal Code
-      .col-sm-10
-        input.form-control(name="vip_paypal",  placeholder="One on One Paypal Code" value="#{obj.vip_paypal || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 2-4
-      .col-sm-10
-        input.form-control(name="normal_price", type="number" step="0.01" placeholder="two to four price" value="#{obj.normal_price || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 2-4 Paypal Code
-      .col-sm-10
-        input.form-control(name="normal_paypal", placeholder="two to four PaypalCode" value="#{obj.normal_paypal || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 5-8
-      .col-sm-10
-        input.form-control(name="big_price", type="number"  step="0.01" placeholder="five to eight price" value="#{obj.big_price || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 5-8 Paypal Code
-      .col-sm-10
-        input.form-control(name="big_paypal", placeholder="five to eight PaypalCode" value="#{obj.big_paypal || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 1对1 Discount
-      .col-sm-10
-        input.form-control(name="vip_price_discount",  type="number"  step="0.01" placeholder="One on One price" value="#{obj.vip_price_discount || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 1对1 Paypal Code Discount
-      .col-sm-10
-        input.form-control(name="vip_paypal_discount",  placeholder="One on One Paypal Code" value="#{obj.vip_paypal_discount || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 2-4 Discount
-      .col-sm-10
-        input.form-control(name="normal_price_discount",  type="number"  step="0.01" placeholder="two to four price" value="#{obj.normal_price_discount || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 2-4 Paypal Code Discount
-      .col-sm-10
-        input.form-control(name="normal_paypal_discount", placeholder="two to four PaypalCode" value="#{obj.normal_paypal_discount || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 5-8 Discount
-      .col-sm-10
-        input.form-control(name="big_price_discount",  type="number"  step="0.01" placeholder="five to eight price" value="#{obj.big_price_discount || ''}" required)
-    .form-group
-      label.col-sm-2.control-label 5-8 Paypal Code Discount
-      .col-sm-10
-        input.form-control(name="big_paypal_discount", placeholder="five to eight PaypalCode" value="#{obj.big_paypal_discount || ''}"  required)
+        textarea.form-control(name="guide", rows="3" placeholder="Recipe guide"  required) #{obj.guide}
+        input(name="id" type="hidden" value="#{obj._id}")
     .form-group
       .col-sm-offset-2.col-sm-10
-        input(name="id" value="#{obj._id}" type="hidden")
-        button.btn.btn-success(type="submit") 更新
+        button.btn.btn-success(type="submit") Add
         &nbsp;&nbsp;
-        a.btn.btn-default(href="/admin/course_list") 取 消
+        a.btn.btn-default(href="/recipes") Cancel

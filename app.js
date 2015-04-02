@@ -51,6 +51,11 @@ app.get('/recipes', recipe.list);
 app.get('/recipe/add', recipe.toAdd);
 app.post('/recipe/save', recipe.save);
 
+app.get('/recipe/edit', recipe.toEdit);
+app.post('/recipe/update', recipe.update);
+
+app.get('/recipe/remove', recipe.remove);
+
 basicAuth = express.basicAuth('hadeser', '123')
 
 server.listen(app.get('port'), function(){

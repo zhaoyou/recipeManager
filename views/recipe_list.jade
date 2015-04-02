@@ -6,6 +6,8 @@ block content
       span.glyphicon.glyphicon-film
       &nbsp;Recipe Manager
 
+  .well.well-lg
+    a.btn.btn-success(href="/recipe/add") + Add
   .panel.panel-primary
     .panel-heading Recipe List
     .panel-body
@@ -14,9 +16,9 @@ block content
           tr
             th(style="width: 15%") Recipe Name
             th(style="width: 15%") Recipe Brief
-            th(style="width: 10%") Recipe Guide
-            th(style="width: 30%") Recipe Image
-            th(style="width: 10%") 操作
+            th(style="width: 20%") Recipe Guide
+            th(style="width: 15%") Recipe Image
+            th(style="width: 15%") 操作
           each c in list
             tr
               td #{c.name}
@@ -25,7 +27,6 @@ block content
               td
                 img(src="#{c.imageSrc}")
               td
-                a.btn.btn-danger(href="/removecourse/#{c._id}") 删除
-                a.btn.btn-info(href="/course_edit?id=#{c._id}") 编辑
-
-  a.btn.btn-success(href="/recipe/add") + Add
+                a.btn.btn-info(href="/recipe/edit?id=#{c._id}") 编辑
+                &nbsp;
+                a.btn.btn-danger(href="/recipe/remove?id=#{c._id}") 删除
