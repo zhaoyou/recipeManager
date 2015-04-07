@@ -1,0 +1,26 @@
+extends layout_admin
+
+block content
+  .page-header
+    h1
+      span.glyphicon.glyphicon-facetime-video
+      &nbsp;&nbsp; Edit Taboo
+  form.form-horizontal(role="form", method="post", action="/taboo/update")
+    .form-group
+      label.col-sm-2.control-label Taboo Title
+      .col-sm-10
+        input.form-control(name="title" type="text",  placeholder="Taboo Title", value="#{obj.title}" required)
+    .form-group
+      label.col-sm-2.control-label Taboo Foods
+      .col-sm-10
+        input.form-control(name="items" type="text", placeholder="Taboo Foods" value="#{obj.items}" required)
+    .form-group
+      label.col-sm-2.control-label Taboo Reason
+      .col-sm-10
+        textarea.form-control(name="reason", rows="3" placeholder="Taboo Reason" required) #{obj.reason}
+        input.form-control(name="id" type="hidden" value="#{obj._id}" required)
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-success(type="submit") Add
+        &nbsp;&nbsp;
+        a.btn.btn-default(href="/taboos") Cancel

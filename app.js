@@ -10,6 +10,7 @@ var db = mongoskin.db('mongodb://localhost:27017/recipedb?auto_reconnect', {safe
 var http = require('http');
 var path = require('path');
 var recipe = require('./routes/recipe.js');
+var taboo = require('./routes/taboo.js');
 
 var app = express();
 
@@ -18,6 +19,7 @@ var server = http.createServer(app)
 app.use(function(req, res, next) {
   req.db = {};
   req.db.recipe      = db.collection('recipe');
+  req.db.taboo      = db.collection('taboo');
   next();
 })
 
@@ -50,11 +52,17 @@ app.get('/', routes.index);
 app.get('/recipes', recipe.list);
 app.get('/recipe/add', recipe.toAdd);
 app.post('/recipe/save', recipe.save);
-
 app.get('/recipe/edit', recipe.toEdit);
 app.post('/recipe/update', recipe.update);
-
 app.get('/recipe/remove', recipe.remove);
+
+app.get('/taboos', taboo.list);
+app.get('/taboo/add', taboo.toAdd);
+app.post('/taboo/save', taboo.save);
+app.get('/taboo/edit', taboo.toEdit);
+app.post('/taboo/update', taboo.update);
+app.get('/taboo/remove', taboo.remove);
+
 
 basicAuth = express.basicAuth('hadeser', '123')
 

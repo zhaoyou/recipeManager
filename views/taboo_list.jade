@@ -1,0 +1,29 @@
+extends layout_admin
+
+block content
+  .page-header
+    h1
+      span.glyphicon.glyphicon-film
+      &nbsp;Taboo Manager
+
+  .well.well-lg
+    a.btn.btn-success(href="/taboo/add") + Add
+  .panel.panel-primary
+    .panel-heading Taboo List
+    .panel-body
+      .table-responsive
+        table.table.table-striped.table-hover
+          tr
+            th(style="width: 15%") Taboo Title
+            th(style="width: 15%") Taboo Items
+            th(style="width: 40%") Taboo Reason
+            th(style="width: 15%") 操作
+          each c in list
+            tr
+              td #{c.title}
+              td #{c.items}
+              td #{c.reason}
+              td
+                a.btn.btn-info(href="/taboo/edit?id=#{c._id}") 编辑
+                &nbsp;
+                a.btn.btn-danger(href="/taboo/remove?id=#{c._id}") 删除
