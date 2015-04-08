@@ -11,6 +11,7 @@ var http = require('http');
 var path = require('path');
 var recipe = require('./routes/recipe.js');
 var taboo = require('./routes/taboo.js');
+var api = require('./routes/api.js');
 
 var app = express();
 
@@ -62,6 +63,10 @@ app.post('/taboo/save', taboo.save);
 app.get('/taboo/edit', taboo.toEdit);
 app.post('/taboo/update', taboo.update);
 app.get('/taboo/remove', taboo.remove);
+
+app.get('/api/recipes', api.recipes);
+app.get('/api/taboos', api.taboos);
+
 
 
 basicAuth = express.basicAuth('hadeser', '123')
