@@ -4,7 +4,8 @@
   "description": "download recipe for women",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "zhaoyou",
   "license": "BSD-2-Clause",
