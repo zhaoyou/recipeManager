@@ -1,5 +1,5 @@
+- var title = 'xxxxx'
 extends layout_admin
-
 block content
   .page-header
     h1
@@ -9,7 +9,7 @@ block content
   .well.well-lg
     a.btn.btn-success(href="/recipe/add") + Add
   .panel.panel-primary
-    .panel-heading Recipe List
+    .panel-heading Recipe List 总共条数#{list.length}
     .panel-body
       .table-responsive
         table.table.table-striped.table-hover
