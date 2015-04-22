@@ -1,7 +1,9 @@
+block variables
+
 doctype html
 html
   head
-    title= title
+    title #{title}
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
@@ -14,9 +16,9 @@ html
         a.navbar-brand Index
       .navbar-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
-          li
+          li(class=nav=='recipe' ? 'active' : '')
             a(href="/recipes") Recipe
-          li
+          li(class=nav=='taboo' ? 'active' : '')
             a(href="/taboos") Taboo
     .container
       block content
